@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include "my_thread.hpp"
+
 class TestThread : public ::testing::Test {
 protected:
     void SetUp() override {
@@ -14,5 +16,12 @@ protected:
 };
 
 TEST_F(TestThread, test1) {
-    EXPECT_EQ(1, 1);
+    int local_state=0;
+    func my_func(local_state);
+    std::thread my_thread(my_func);
+    // my_thread.detach();
+    // my_thread.join();
+    ThreadGuard g(my_thread);
+    std::thread passing_thread(myPrint, "Hello world");
+    ThreadGuard f(passing_thread);
 }
