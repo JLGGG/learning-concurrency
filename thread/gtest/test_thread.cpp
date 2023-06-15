@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <functional>
 
 #include "my_thread.hpp"
 
@@ -21,7 +22,16 @@ TEST_F(TestThread, test1) {
     std::thread my_thread(my_func);
     // my_thread.detach();
     // my_thread.join();
-    ThreadGuard g(my_thread);
+    ThreadGuard t1(my_thread);
     std::thread passing_thread(myPrint, "Hello world");
-    ThreadGuard f(passing_thread);
+    ThreadGuard t2(passing_thread);
+
+    std::vector<JoiningThread> threads;
+    for (int i=0; i<5; i++) {
+        threads.emplace_back(numPrint, i);
+    }
+
+    // for(auto& item : threads) {
+    //     item.join();
+    // }
 }
