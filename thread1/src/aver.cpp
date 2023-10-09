@@ -2,6 +2,7 @@
 #include <numeric>
 #include <vector>
 #include <iostream>
+#include <fmt/core.h>
 
 using namespace std;
 
@@ -37,5 +38,6 @@ int main(int argc, char **argv) {
         total += res[i];
     }
 
-    cout << "Average is: " << total/N << endl;
+    // cout << "Average is: " << total/N << endl;
+    fmt::print("Average is: {}\n", total/N);
 }

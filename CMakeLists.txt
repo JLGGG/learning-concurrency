@@ -62,3 +62,4 @@ FetchContent_MakeAvailable(backward)
 add_compile_options(-W -Wall)
 
 add_subdirectory(thread)
+add_subdirectory(thread1)
