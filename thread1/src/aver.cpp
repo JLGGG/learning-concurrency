@@ -1,4 +1,5 @@
 #include <thread>
+#include <chrono>
 #include <numeric>
 #include <vector>
 #include <iostream>
@@ -60,6 +61,7 @@ int main(int argc, char **argv) {
         local_start += step;
     }
 
+    this_thread::sleep_for(std::chrono::seconds(1)); // this code waits when all threads are terminated.
     double total = 0;
     for (int i = 0; i < num_thr; i++) {
         // thr[i]->join();
