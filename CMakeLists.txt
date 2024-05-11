@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.22.1)
 
 # Introduce the ccache for build speedup
 # https://crascit.com/2016/04/09/using-ccache-with-cmake/

@@ -1,5 +1,6 @@
 #include <thread>
 #include <chrono>
+#include <cmath>
 #include <numeric>
 #include <vector>
 #include <iostream>
@@ -38,13 +39,13 @@ void PartialSumFunctor::operator() () {
 }
 
 int main(int argc, char **argv) {
-    int num_thr = thread::hardware_concurrency();
+    const int num_thr = thread::hardware_concurrency();
     int N = atoi(argv[1]);
-    int step = (int)ceil(N*1.0/num_thr);
+    int step = (int)std::ceil(N*1.0/num_thr);
     // double res[num_thr];
 
     vector<double> data(N);
-    iota(data.begin(), data.end(), 1);
+    std::iota(data.begin(), data.end(), 1);
     // thread *thr[num_thr];
     unique_ptr<thread> thr[num_thr];
     unique_ptr<ThreadGuard> tg[num_thr];
